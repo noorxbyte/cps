@@ -1,0 +1,156 @@
+[
+    {
+        "model":"cps.genset",
+        "pk": 7,
+        "fields":{
+            "number":7,
+            "serial_number":7,
+            "make":"Cummins",
+            "model":"KTA50",
+            "cap_kw":1000
+        }
+    },
+    {
+        "model":"cps.genset",
+        "pk": 8,
+        "fields":{
+            "number":8,
+            "serial_number":8,
+            "make":"Cummins",
+            "model":"KTA50",
+            "cap_kw":800
+        }
+    },
+    {
+        "model":"cps.genset",
+        "pk": 9,
+        "fields":{
+            "number":9,
+            "serial_number":9,
+            "make":"Cummins",
+            "model":"KTA50",
+            "cap_kw":1000
+        }
+    },
+    {
+        "model":"cps.genset",
+        "pk": 11,
+        "fields":{
+            "number":11,
+            "serial_number":11,
+            "make":"Cummins",
+            "model":"KTA50",
+            "cap_kw":1000
+        }
+    },
+    {
+        "model":"cps.genset",
+        "pk": 12,
+        "fields":{
+            "number":12,
+            "serial_number":12,
+            "make":"Cummins",
+            "model":"KTA50",
+            "cap_kw":1000
+        }
+    },
+    {
+        "model":"cps.genset",
+        "pk": 13,
+        "fields":{
+            "number":13,
+            "serial_number":13,
+            "make":"Cummins",
+            "model":"KTA50",
+            "cap_kw":1200
+        }
+    },
+    {
+        "model":"cps.genset",
+        "pk": 14,
+        "fields":{
+            "number":14,
+            "serial_number":14,
+            "make":"MTU",
+            "model":"MTU Something",
+            "cap_kw":2000
+        }
+    },
+    {
+        "model":"cps.genset",
+        "pk": 15,
+        "fields":{
+            "number":15,
+            "serial_number":15,
+            "make":"MTU",
+            "model":"MTU Something",
+            "cap_kw":2000
+        }
+    },
+    {
+        "model":"cps.genset",
+        "pk": 16,
+        "fields":{
+            "number":16,
+            "serial_number":16,
+            "make":"Cummins",
+            "model":"KTA50",
+            "cap_kw":1200
+        }
+    },
+    {
+        "model":"cps.genset",
+        "pk": 17,
+        "fields":{
+            "number":17,
+            "serial_number":17,
+            "make":"Cummins",
+            "model":"KTA50",
+            "cap_kw":800
+        }
+    },
+    {
+        "model":"cps.genset",
+        "pk": 18,
+        "fields":{
+            "number":18,
+            "serial_number":18,
+            "make":"Cummins",
+            "model":"KTA50",
+            "cap_kw":1800
+        }
+    },
+    {
+        "model":"cps.genset",
+        "pk": 19,
+        "fields":{
+            "number":19,
+            "serial_number":19,
+            "make":"Cummins",
+            "model":"KTA50",
+            "cap_kw":1000
+        }
+    },
+    {
+        "model":"cps.genset",
+        "pk": 20,
+        "fields":{
+            "number":20,
+            "serial_number":20,
+            "make":"Cummins",
+            "model":"KTA50",
+            "cap_kw":1000
+        }
+    },
+    {
+        "model":"cps.genset",
+        "pk": 21,
+        "fields":{
+            "number":21,
+            "serial_number":21,
+            "make":"Cummins",
+            "model":"KTA50",
+            "cap_kw":1200
+        }
+    }
+]
