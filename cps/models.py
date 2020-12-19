@@ -14,11 +14,22 @@ class Engine(models.Model):
     )
     make = models.CharField(max_length=100)
     model = models.CharField(max_length=100)
-    details = models.CharField(max_length=255)
+    details = models.CharField(
+        max_length=255,
+        blank=True,
+        null=True
+    )
+
+    def __str__(self):
+        return '{} {} (SN: {})'.format(
+            self.make,
+            self.model,
+            self.serial_number
+        )
 
 
 
-class Generator:
+class Generator(models.Model):
 
     class Meta:
         db_table = 'tblGenerators'
@@ -30,12 +41,23 @@ class Generator:
     )
     make = models.CharField(max_length=100)
     model = models.CharField(max_length=100)
-    details = models.CharField(max_length=255)
+    details = models.CharField(
+        max_length=255,
+        blank=True,
+        null=True
+    )
     cap_kw = models.IntegerField()
 
+    def __str__(self):
+        return '{} {} (SN: {})'.format(
+            self.make,
+            self.model,
+            self.serial_number
+        )
 
 
-class StorageTank:
+
+class StorageTank(models.Model):
 
     class Meta:
         db_table = 'tblStorageTanks'
@@ -43,25 +65,38 @@ class StorageTank:
     no = models.IntegerField(unique=True, db_index=True)
     max_mm = models.IntegerField()
 
+    def __str__(self):
+        return 'Storage Tank {:02d}'.format(self.no)
 
 
-class DayTank:
+
+class DayTank(models.Model):
 
     class Meta:
         db_table = 'tblDayTanks'
 
-    multiplier = models.IntegerField()
+    multiplier = models.FloatField()
     max_mm = models.IntegerField()
-    details = models.CharField(max_length=255)
+    details = models.CharField(
+        max_length=255,
+        blank=True,
+        null=True
+    )
+
+    def __str__(self):
+        return 'Day Tank {:02d}'.format(self.genset.no) \
+        if hasattr(self, 'genset') \
+        else 'DT: {}'.format(self.details)
 
 
 
-class GenSet:
+class Genset(models.Model):
 
     class Meta:
-        db_table = 'tblGenSets'
+        db_table = 'tblGensets'
 
     no = models.IntegerField(unique=True, db_index=True)
+    operational = models.BooleanField(default=True)
     engine = models.ForeignKey(
         'Engine',
         on_delete=models.CASCADE
@@ -73,12 +108,17 @@ class GenSet:
     cap_kw = models.IntegerField()
     daytank = models.OneToOneField(
         'DayTank',
-        on_delete = models.CASCADE
+        on_delete = models.CASCADE,
+        blank=True,
+        null=True,
     )
 
+    def __str__(self):
+        return 'DEG {:02d}'.format(self.no)
 
 
-class RunRecord:
+
+class RunRecord(models.Model):
 
     class Meta:
         db_table = 'tblRunRecords'
@@ -89,8 +129,8 @@ class RunRecord:
 
     record_date = models.DateField()
     record_time = models.TimeField()
-    genset = models.ForeignKey(
-        'GenSet',
+    Genset = models.ForeignKey(
+        'Genset',
         on_delete=models.CASCADE
     )
     action = models.CharField(
@@ -102,15 +142,15 @@ class RunRecord:
 
 
 
-class ProductionRecord:
+class ProductionRecord(models.Model):
 
     class Meta:
         db_table = 'tblProductionRecords'
 
     record_date = models.DateField()
     record_time = models.TimeField()
-    genset = models.ForeignKey(
-        'GenSet',
+    Genset = models.ForeignKey(
+        'Genset',
         on_delete=models.CASCADE
     )
     no = models.IntegerField(db_index=True)
@@ -121,7 +161,7 @@ class ProductionRecord:
 
 
 
-class StorageTankRecord:
+class StorageTankRecord(models.Model):
     
     class Meta:
         db_table = 'tblStorageTankRecords'
@@ -139,15 +179,15 @@ class StorageTankRecord:
 
 
 
-class DayTankRecord:
+class DayTankRecord(models.Model):
 
     class Meta:
         db_table = 'tblDayTankRecords'
 
     record_date = models.DateField()
     record_time = models.TimeField()
-    genset = models.ForeignKey(
-        'GenSet',
+    Genset = models.ForeignKey(
+        'Genset',
         on_delete=models.CASCADE
     )
     daytank = models.ForeignKey(
