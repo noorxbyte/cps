@@ -1,0 +1,657 @@
+[
+{
+    "model": "cps.engine",
+    "pk": 1,
+    "fields": {
+        "serial_number": "E07",
+        "make": "Cummins",
+        "model": "KTA50",
+        "details": null
+    }
+},
+{
+    "model": "cps.engine",
+    "pk": 2,
+    "fields": {
+        "serial_number": "E08",
+        "make": "Cummins",
+        "model": "KTA50",
+        "details": null
+    }
+},
+{
+    "model": "cps.engine",
+    "pk": 3,
+    "fields": {
+        "serial_number": "E09",
+        "make": "Cummins",
+        "model": "KTA50",
+        "details": null
+    }
+},
+{
+    "model": "cps.engine",
+    "pk": 4,
+    "fields": {
+        "serial_number": "E10",
+        "make": "Cummins",
+        "model": "KTA50",
+        "details": null
+    }
+},
+{
+    "model": "cps.engine",
+    "pk": 5,
+    "fields": {
+        "serial_number": "E11",
+        "make": "Cummins",
+        "model": "KTA50",
+        "details": null
+    }
+},
+{
+    "model": "cps.engine",
+    "pk": 6,
+    "fields": {
+        "serial_number": "E12",
+        "make": "Cummins",
+        "model": "KTA50",
+        "details": null
+    }
+},
+{
+    "model": "cps.engine",
+    "pk": 7,
+    "fields": {
+        "serial_number": "E13",
+        "make": "Cummins",
+        "model": "KTA50",
+        "details": null
+    }
+},
+{
+    "model": "cps.engine",
+    "pk": 8,
+    "fields": {
+        "serial_number": "E14",
+        "make": "Cummins",
+        "model": "KTA50",
+        "details": null
+    }
+},
+{
+    "model": "cps.engine",
+    "pk": 9,
+    "fields": {
+        "serial_number": "E15",
+        "make": "Cummins",
+        "model": "KTA50",
+        "details": null
+    }
+},
+{
+    "model": "cps.engine",
+    "pk": 10,
+    "fields": {
+        "serial_number": "E16",
+        "make": "Cummins",
+        "model": "KTA50",
+        "details": null
+    }
+},
+{
+    "model": "cps.engine",
+    "pk": 11,
+    "fields": {
+        "serial_number": "E17",
+        "make": "Cummins",
+        "model": "KTA50",
+        "details": null
+    }
+},
+{
+    "model": "cps.engine",
+    "pk": 12,
+    "fields": {
+        "serial_number": "E18",
+        "make": "Cummins",
+        "model": "KTA50",
+        "details": null
+    }
+},
+{
+    "model": "cps.engine",
+    "pk": 13,
+    "fields": {
+        "serial_number": "E19",
+        "make": "Cummins",
+        "model": "KTA50",
+        "details": null
+    }
+},
+{
+    "model": "cps.engine",
+    "pk": 14,
+    "fields": {
+        "serial_number": "E20",
+        "make": "Cummins",
+        "model": "KTA50",
+        "details": null
+    }
+},
+{
+    "model": "cps.engine",
+    "pk": 15,
+    "fields": {
+        "serial_number": "E21",
+        "make": "Cummins",
+        "model": "KTA50",
+        "details": null
+    }
+},
+{
+    "model": "cps.generator",
+    "pk": 1,
+    "fields": {
+        "serial_number": "G07",
+        "make": "Siemens",
+        "model": "P1000",
+        "details": null,
+        "cap_kw": 1000
+    }
+},
+{
+    "model": "cps.generator",
+    "pk": 2,
+    "fields": {
+        "serial_number": "G08",
+        "make": "Siemens",
+        "model": "P800",
+        "details": null,
+        "cap_kw": 800
+    }
+},
+{
+    "model": "cps.generator",
+    "pk": 3,
+    "fields": {
+        "serial_number": "G09",
+        "make": "Siemens",
+        "model": "P1000",
+        "details": null,
+        "cap_kw": 1000
+    }
+},
+{
+    "model": "cps.generator",
+    "pk": 4,
+    "fields": {
+        "serial_number": "G10",
+        "make": "Siemens",
+        "model": "P1000",
+        "details": null,
+        "cap_kw": 1000
+    }
+},
+{
+    "model": "cps.generator",
+    "pk": 5,
+    "fields": {
+        "serial_number": "G11",
+        "make": "Siemens",
+        "model": "P1000",
+        "details": null,
+        "cap_kw": 1000
+    }
+},
+{
+    "model": "cps.generator",
+    "pk": 6,
+    "fields": {
+        "serial_number": "G12",
+        "make": "Siemens",
+        "model": "P1000",
+        "details": null,
+        "cap_kw": 1000
+    }
+},
+{
+    "model": "cps.generator",
+    "pk": 7,
+    "fields": {
+        "serial_number": "G13",
+        "make": "Siemens",
+        "model": "P1200",
+        "details": null,
+        "cap_kw": 1200
+    }
+},
+{
+    "model": "cps.generator",
+    "pk": 8,
+    "fields": {
+        "serial_number": "G14",
+        "make": "MTU",
+        "model": "P2000",
+        "details": null,
+        "cap_kw": 2000
+    }
+},
+{
+    "model": "cps.generator",
+    "pk": 9,
+    "fields": {
+        "serial_number": "G15",
+        "make": "MTU",
+        "model": "P2000",
+        "details": null,
+        "cap_kw": 2000
+    }
+},
+{
+    "model": "cps.generator",
+    "pk": 10,
+    "fields": {
+        "serial_number": "G16",
+        "make": "Cummins",
+        "model": "P1200",
+        "details": null,
+        "cap_kw": 1200
+    }
+},
+{
+    "model": "cps.generator",
+    "pk": 11,
+    "fields": {
+        "serial_number": "G17",
+        "make": "Siemens",
+        "model": "P800",
+        "details": null,
+        "cap_kw": 800
+    }
+},
+{
+    "model": "cps.generator",
+    "pk": 12,
+    "fields": {
+        "serial_number": "G18",
+        "make": "Siemens",
+        "model": "P1600",
+        "details": null,
+        "cap_kw": 1600
+    }
+},
+{
+    "model": "cps.generator",
+    "pk": 13,
+    "fields": {
+        "serial_number": "G19",
+        "make": "Siemens",
+        "model": "P1000",
+        "details": null,
+        "cap_kw": 1000
+    }
+},
+{
+    "model": "cps.generator",
+    "pk": 14,
+    "fields": {
+        "serial_number": "G20",
+        "make": "Siemens",
+        "model": "P1000",
+        "details": null,
+        "cap_kw": 1000
+    }
+},
+{
+    "model": "cps.generator",
+    "pk": 15,
+    "fields": {
+        "serial_number": "G21",
+        "make": "Siemens",
+        "model": "P1200",
+        "details": null,
+        "cap_kw": 1200
+    }
+},
+{
+    "model": "cps.storagetank",
+    "pk": 1,
+    "fields": {
+        "no": 1,
+        "max_mm": 6000
+    }
+},
+{
+    "model": "cps.storagetank",
+    "pk": 2,
+    "fields": {
+        "no": 2,
+        "max_mm": 6000
+    }
+},
+{
+    "model": "cps.daytank",
+    "pk": 1,
+    "fields": {
+        "multiplier": 1.71,
+        "max_mm": 1120,
+        "details": null
+    }
+},
+{
+    "model": "cps.daytank",
+    "pk": 2,
+    "fields": {
+        "multiplier": 2.21,
+        "max_mm": 1400,
+        "details": "13 no"
+    }
+},
+{
+    "model": "cps.daytank",
+    "pk": 3,
+    "fields": {
+        "multiplier": 1.48,
+        "max_mm": 1400,
+        "details": null
+    }
+},
+{
+    "model": "cps.daytank",
+    "pk": 4,
+    "fields": {
+        "multiplier": 2.21,
+        "max_mm": 1400,
+        "details": null
+    }
+},
+{
+    "model": "cps.daytank",
+    "pk": 5,
+    "fields": {
+        "multiplier": 2.21,
+        "max_mm": 1400,
+        "details": null
+    }
+},
+{
+    "model": "cps.daytank",
+    "pk": 6,
+    "fields": {
+        "multiplier": 2.21,
+        "max_mm": 1400,
+        "details": null
+    }
+},
+{
+    "model": "cps.daytank",
+    "pk": 7,
+    "fields": {
+        "multiplier": 1.2,
+        "max_mm": 1460,
+        "details": null
+    }
+},
+{
+    "model": "cps.daytank",
+    "pk": 8,
+    "fields": {
+        "multiplier": 2.234,
+        "max_mm": 1400,
+        "details": null
+    }
+},
+{
+    "model": "cps.daytank",
+    "pk": 9,
+    "fields": {
+        "multiplier": 2.175,
+        "max_mm": 1220,
+        "details": null
+    }
+},
+{
+    "model": "cps.daytank",
+    "pk": 10,
+    "fields": {
+        "multiplier": 2.175,
+        "max_mm": 1220,
+        "details": null
+    }
+},
+{
+    "model": "cps.daytank",
+    "pk": 11,
+    "fields": {
+        "multiplier": 2.21,
+        "max_mm": 1400,
+        "details": null
+    }
+},
+{
+    "model": "cps.daytank",
+    "pk": 12,
+    "fields": {
+        "multiplier": 1.852,
+        "max_mm": 1250,
+        "details": null
+    }
+},
+{
+    "model": "cps.daytank",
+    "pk": 13,
+    "fields": {
+        "multiplier": 2.34,
+        "max_mm": 1300,
+        "details": null
+    }
+},
+{
+    "model": "cps.daytank",
+    "pk": 14,
+    "fields": {
+        "multiplier": 1.77633,
+        "max_mm": 1400,
+        "details": null
+    }
+},
+{
+    "model": "cps.daytank",
+    "pk": 15,
+    "fields": {
+        "multiplier": 1.77633,
+        "max_mm": 1400,
+        "details": null
+    }
+},
+{
+    "model": "cps.daytank",
+    "pk": 16,
+    "fields": {
+        "multiplier": 2.26,
+        "max_mm": 1400,
+        "details": null
+    }
+},
+{
+    "model": "cps.genset",
+    "pk": 1,
+    "fields": {
+        "no": 7,
+        "operational": true,
+        "engine": 1,
+        "generator": 1,
+        "cap_kw": 1000,
+        "daytank": 1
+    }
+},
+{
+    "model": "cps.genset",
+    "pk": 2,
+    "fields": {
+        "no": 8,
+        "operational": true,
+        "engine": 2,
+        "generator": 2,
+        "cap_kw": 800,
+        "daytank": 3
+    }
+},
+{
+    "model": "cps.genset",
+    "pk": 3,
+    "fields": {
+        "no": 9,
+        "operational": true,
+        "engine": 3,
+        "generator": 3,
+        "cap_kw": 1000,
+        "daytank": 4
+    }
+},
+{
+    "model": "cps.genset",
+    "pk": 4,
+    "fields": {
+        "no": 10,
+        "operational": false,
+        "engine": 4,
+        "generator": 4,
+        "cap_kw": 1000,
+        "daytank": 6
+    }
+},
+{
+    "model": "cps.genset",
+    "pk": 5,
+    "fields": {
+        "no": 11,
+        "operational": true,
+        "engine": 5,
+        "generator": 5,
+        "cap_kw": 1000,
+        "daytank": 11
+    }
+},
+{
+    "model": "cps.genset",
+    "pk": 6,
+    "fields": {
+        "no": 12,
+        "operational": true,
+        "engine": 6,
+        "generator": 6,
+        "cap_kw": 1000,
+        "daytank": 7
+    }
+},
+{
+    "model": "cps.genset",
+    "pk": 7,
+    "fields": {
+        "no": 13,
+        "operational": true,
+        "engine": 7,
+        "generator": 7,
+        "cap_kw": 1200,
+        "daytank": 8
+    }
+},
+{
+    "model": "cps.genset",
+    "pk": 8,
+    "fields": {
+        "no": 14,
+        "operational": true,
+        "engine": 8,
+        "generator": 8,
+        "cap_kw": 2000,
+        "daytank": 9
+    }
+},
+{
+    "model": "cps.genset",
+    "pk": 9,
+    "fields": {
+        "no": 15,
+        "operational": true,
+        "engine": 9,
+        "generator": 9,
+        "cap_kw": 2000,
+        "daytank": 10
+    }
+},
+{
+    "model": "cps.genset",
+    "pk": 10,
+    "fields": {
+        "no": 16,
+        "operational": true,
+        "engine": 10,
+        "generator": 10,
+        "cap_kw": 1200,
+        "daytank": 2
+    }
+},
+{
+    "model": "cps.genset",
+    "pk": 11,
+    "fields": {
+        "no": 17,
+        "operational": true,
+        "engine": 11,
+        "generator": 11,
+        "cap_kw": 800,
+        "daytank": 12
+    }
+},
+{
+    "model": "cps.genset",
+    "pk": 12,
+    "fields": {
+        "no": 18,
+        "operational": true,
+        "engine": 12,
+        "generator": 12,
+        "cap_kw": 1600,
+        "daytank": 13
+    }
+},
+{
+    "model": "cps.genset",
+    "pk": 13,
+    "fields": {
+        "no": 19,
+        "operational": true,
+        "engine": 13,
+        "generator": 13,
+        "cap_kw": 1000,
+        "daytank": 14
+    }
+},
+{
+    "model": "cps.genset",
+    "pk": 14,
+    "fields": {
+        "no": 20,
+        "operational": true,
+        "engine": 14,
+        "generator": 14,
+        "cap_kw": 1000,
+        "daytank": 15
+    }
+},
+{
+    "model": "cps.genset",
+    "pk": 15,
+    "fields": {
+        "no": 21,
+        "operational": true,
+        "engine": 15,
+        "generator": 15,
+        "cap_kw": 1200,
+        "daytank": 16
+    }
+}
+]

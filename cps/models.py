@@ -86,7 +86,7 @@ class DayTank(models.Model):
     def __str__(self):
         return 'Day Tank {:02d}'.format(self.genset.no) \
         if hasattr(self, 'genset') \
-        else 'DT: {}'.format(self.details)
+        else '{:04d}: {:f}'.format(self.max_mm, self.multiplier)
 
 
 
