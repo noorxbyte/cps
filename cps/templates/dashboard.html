@@ -1,17 +1,33 @@
 {% extends "_base.html" %}
 
-
-
 {% block title %}CPS - Dashboard{% endblock %}
 
 
 
 {% block content %}
 
-<ul>
-  {% for genset in gensets %}
-    <li>{{ genset }}</li>
-  {% endfor %}
-</ul>
+{% load static %}
+
+<style>
+  .floating-card {
+    float: left;
+    margin: 5px;
+    max-width: 200px;
+  }
+</style>
+
+<div class="">
+{% for genset in gensets %}
+<div class="card floating-card" style="width: 150px;">
+  <div class="card-header"><h5 class="card-title">{{ genset }}</h5></div>
+  <img class="card-img-top" src="{% static 'images/genset/normal.png' %}" alt="Genset">
+  <div class="card-body text-center">
+    <button class="btn btn-light">
+      Action
+    </button>
+  </div>
+</div>
+{% endfor %}
+</div>
 
 {% endblock %}

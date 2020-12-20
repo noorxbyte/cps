@@ -7,8 +7,8 @@ from django.contrib.auth.decorators import login_required
 from ..models import Genset
 
 @login_required
-def dashboard(request):
+def index(request):
     context = {
-        "gensets": Genset.objects.all()
+        "gensets": Genset.objects.all().filter(operational=True)
     }
     return render(request, 'dashboard.html', context)
