@@ -94,6 +94,7 @@ class Genset(models.Model):
 
     class Meta:
         db_table = 'tblGensets'
+        unique_together = [['engine', 'generator']]
 
     no = models.IntegerField(unique=True, db_index=True)
     operational = models.BooleanField(default=True)
