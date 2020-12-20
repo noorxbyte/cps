@@ -1,0 +1,17 @@
+{% extends "_base.html" %}
+
+
+
+{% block title %}CPS - Dashboard{% endblock %}
+
+
+
+{% block content %}
+
+<ul>
+  {% for genset in gensets %}
+    <li>{{ genset }}</li>
+  {% endfor %}
+</ul>
+
+{% endblock %}

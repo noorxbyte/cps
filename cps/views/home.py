@@ -4,6 +4,11 @@ from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
+from ..models import Genset
+
 @login_required
-def index(request):
-    return HttpResponse("CPS HOME")
+def dashboard(request):
+    context = {
+        "gensets": Genset.objects.all()
+    }
+    return render(request, 'dashboard.html', context)
