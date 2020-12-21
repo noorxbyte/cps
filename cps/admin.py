@@ -9,3 +9,5 @@ admin.site.register(Generator)
 admin.site.register(Genset)
 admin.site.register(StorageTank)
 admin.site.register(DayTank)
+
+admin.site.register(RunRecord)

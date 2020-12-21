@@ -117,6 +117,16 @@ class Genset(models.Model):
     def __str__(self):
         return 'DEG {:02d}'.format(self.no)
 
+    def running(self):
+        records = RunRecord.objects.filter(genset=self.id)\
+            .order_by('-record_date', '-record_time')
+
+        if records:
+            if records[0].action == "START":
+                return True
+
+        return False
+
 
 
 class RunRecord(models.Model):
@@ -125,21 +135,37 @@ class RunRecord(models.Model):
         db_table = 'tblRunRecords'
 
     class RunChoice(models.TextChoices):
-        START = 'R'
-        STOP = 'S'
+        START = 'START'
+        STOP = 'STOP'
 
     record_date = models.DateField()
     record_time = models.TimeField()
-    Genset = models.ForeignKey(
+    genset = models.ForeignKey(
         'Genset',
         on_delete=models.CASCADE
     )
     action = models.CharField(
-        max_length=1,
+        max_length=5,
         choices=RunChoice.choices
     )
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        if self.action == 'START':
+            act = 'Started'
+        elif self.action == 'STOP':
+            act = 'Stopped'
+        else:
+            act = 'Error'
+
+        return '{} {} at {} on {}'.format(
+            act,
+            self.genset,
+            self.record_time,
+            self.record_date
+        )
+
 
 
 

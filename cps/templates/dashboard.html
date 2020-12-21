@@ -20,11 +20,38 @@
 {% for genset in gensets %}
 <div class="card floating-card" style="width: 150px;">
   <div class="card-header"><h5 class="card-title">{{ genset }}</h5></div>
-  <img class="card-img-top" src="{% static 'images/genset/normal.png' %}" alt="Genset">
+  <img class="card-img-top" src="
+      {% if genset.running %}
+        {% static 'images/genset/running.png' %}
+      {% else %}
+        {% static 'images/genset/stopped.png' %}
+      {% endif %}
+    " alt="{{ genset }} Running">
   <div class="card-body text-center">
-    <button class="btn btn-light">
-      Action
-    </button>
+    <div class="dropdown">
+      <button class="btn btn-light dropdown-toggle" type="button" id="btnDEG{{ genset.id }}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        {% if genset.running %}
+          Running
+        {% else %}
+          Stopped
+        {% endif %}
+      </button>
+      <div class="dropdown-menu" aria-labelledby="btnDEG{{ genset.id }}">
+        <a class="dropdown-item" href="
+          {% if genset.running %}
+            #
+          {% else %}
+            ##
+          {% endif %}
+        ">
+          {% if genset.running %}
+            Stop Genset
+          {% else %}
+            Start Genset
+          {% endif %}
+        </a>
+      </div>
+    </div>
   </div>
 </div>
 {% endfor %}
