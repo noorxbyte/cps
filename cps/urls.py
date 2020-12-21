@@ -7,4 +7,6 @@ urlpatterns = [
 
     path('daytanks/', views.daytank.index, name='cps.daytanks.index'),
     path('daytank/<int:id>/', views.daytank.view, name='cps.daytanks.view'),
+
+    path('storagetank/<int:id>/', views.storagetank.view, name='cps.storagetanks.view'),
 ]
