@@ -1,0 +1,10 @@
+.floating-card {
+    float: left;
+    margin: 5px;
+    max-width: 200px;
+}
+
+hr {
+    margin-top: 5px;
+    margin-bottom: 5px
+}

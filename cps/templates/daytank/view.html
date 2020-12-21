@@ -1,0 +1,54 @@
+{% extends "_base.html" %}
+
+{% block title %}CPS - Day Tank {{ no }}{% endblock %}
+
+
+
+{% block content %}
+
+<h3>Day Tank {{ no }}</h3>
+
+<hr>
+
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th rowspan="2">Date</th>
+            <th rowspan="2">Shift</th>
+            <th colspan="2">Initial</th>
+            <th colspan="2">Final</th>
+            <th colspan="3">Storage Tank</th>
+        </tr>
+        <tr>
+            <th scope="col">mm</th>
+            <th scope="col">liters</th>
+            <th scope="col">mm</th>
+            <th scope="col">liters</th>
+            <th scope="col">mm</th>
+            <th scope="col">liters</th>
+            <th scope="col">filled</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for record in records %}
+        <tr>
+            <td>{{ record.record_date }}</td>
+            <td>{{ record.shift }}</td>
+            <td>{{ record.initial }}</td>
+            <td>{{ record.initial_liters }}</td>
+            {% if record.final %}
+                <td>{{ record.final }}</td>
+                <td>{{ record.final_liters }}</td>
+                <td>{{ record.storage_tank_record.sounding }}</td>
+                <td>{{ record.storage_tank_record.liters }}</td>
+                <td>{{ record.storage_tank_record.diff }}</td>
+            {% else %}
+                <td colspan="4">Final Sounding</td>
+                <td></td>
+            {% endif %}
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

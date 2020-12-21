@@ -4,4 +4,7 @@ from . import views
 
 urlpatterns = [
     path('', views.dashboard.index, name='cps.dashboard'),
+
+    path('daytanks/', views.daytank.index, name='cps.daytanks.index'),
+    path('daytank/<int:id>/', views.daytank.view, name='cps.daytanks.view'),
 ]

@@ -195,6 +195,7 @@ class StorageTankRecord(models.Model):
 
     record_date = models.DateField()
     record_time = models.TimeField()
+    shift = models.CharField(max_length=1)
     storage_tank = models.ForeignKey(
         'StorageTank',
         on_delete=models.CASCADE
@@ -213,6 +214,7 @@ class DayTankRecord(models.Model):
 
     record_date = models.DateField()
     record_time = models.TimeField()
+    shift = models.CharField(max_length=1)
     Genset = models.ForeignKey(
         'Genset',
         on_delete=models.CASCADE
@@ -223,8 +225,8 @@ class DayTankRecord(models.Model):
     )
     no = models.IntegerField(db_index=True)
     is_daily_final = models.BooleanField(default=False)
-    initial_mm = models.IntegerField()
-    final_mm = models.IntegerField(
+    initial = models.IntegerField()
+    final = models.IntegerField(
         default=None,
         blank=True,
         null=True

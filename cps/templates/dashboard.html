@@ -8,14 +8,6 @@
 
 {% load static %}
 
-<style>
-  .floating-card {
-    float: left;
-    margin: 5px;
-    max-width: 200px;
-  }
-</style>
-
 <div class="">
 {% for genset in gensets %}
 <div class="card floating-card" style="width: 150px;">
@@ -41,7 +33,8 @@
         {% else %}
           <a href="" class="dropdown-item">Start Genset</a>
         {% endif %}
-        <a href="" class="dropdown-item">Day tank data</a>
+        <hr style="margin-top: 5px; margin-bottom: 5px">
+        <a href="{% url 'cps.daytanks.view' genset.id %}" class="dropdown-item">Day tank data</a>
       </div>
     </div>
   </div>
