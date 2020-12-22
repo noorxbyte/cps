@@ -6,7 +6,12 @@
 
 {% block content %}
 
-<h3>Storage Tank {{ no }}</h3>
+<h3>Storage Tank {{ no }}
+    <br>
+    <small class="text-muted">
+        {{ last_record.sounding }} mm: {{ last_record.liters }} liters
+    </small>
+</h3>
 
 <hr>
 

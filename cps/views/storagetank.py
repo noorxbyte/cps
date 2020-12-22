@@ -13,6 +13,7 @@ def view(request, id):
     no = '{:02d}'.format(StorageTank.objects.get(pk=id).no)
 
     context = {
+        "last_record": records[len(records) - 1],
         "records": records,
         "no": no
     }
