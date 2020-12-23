@@ -64,6 +64,7 @@ class StorageTank(models.Model):
 
     no = models.IntegerField(unique=True, db_index=True)
     max_mm = models.IntegerField()
+    in_use = models.BooleanField()
 
     def __str__(self):
         return 'Storage Tank {:02d}'.format(self.no)
