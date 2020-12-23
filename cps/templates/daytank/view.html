@@ -6,7 +6,15 @@
 
 {% block content %}
 
-<h3>Day Tank {{ no }}</h3>
+<div class="dropdown">
+    <button class="btn btn-secondary dropdown-toggle" type="button" id="btn{{ no }}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Day Tank {{ no }}
+    </button>
+    <div class="dropdown-menu" aria-labelledby="btn{{ no }}">
+        <a class="dropdown-item" href="{% url 'cps.genset.daytank.refill' no %}">Add Refill Record</a>
+        <a class="dropdown-item" href="#">Something else here</a>
+    </div>
+</div>
 
 <hr>
 

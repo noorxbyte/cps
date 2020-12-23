@@ -4,9 +4,12 @@ from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
-from ..models import DayTank, DayTankRecord, StorageTankRecord
+from ..models import DayTank, DayTankRecord, StorageTankRecord, Genset
 
-def view(request, id):
+def view(request, daytank_id=None, genset_no=None):
+    id = daytank_id if daytank_id else\
+        Genset.objects.get(no=genset_no).daytank.id if genset_no else None
+
     records = DayTankRecord.objects.filter(daytank=id)\
         .order_by('record_date', 'record_time')
 
@@ -24,6 +27,16 @@ def view(request, id):
         "no": no
     }
     return render(request, 'daytank/view.html', context)
+
+def refill(request, daytank_id=None, genset_no=None):
+    id = daytank_id if daytank_id else\
+        Genset.objects.get(no=genset_no).daytank.id if genset_no else None
+
+    context = {
+        "no": '{:02d}'.format(DayTank.objects.get(pk=id).genset.no)
+    }
+    
+    return render(request, 'daytank/refill.html', context)
 
 def index(request):
     context = {

@@ -1,0 +1,61 @@
+{% extends "_base.html" %}
+
+{% block title %}CPS - Day Tank {{ no }} Refill{% endblock %}
+
+
+
+{% block content %}
+
+<h3>Refill Day Tank {{ no }}</h3>
+
+<br>
+
+<form class="form-inline" id="refill-form" action="">
+    <label for="start_time" class="sr-only">Start Time</label>
+    <div class="input-group mb-2 mr-sm-2">
+        <div class="input-group-prepend">
+            <div class="input-group-text">Start Time</div>
+        </div>
+        <input type="time" class="form-control" id="start_time" required>
+    </div>
+
+    <label for="end_time" class="sr-only">End Time</label>
+    <div class="input-group mb-2 mr-sm-2">
+        <div class="input-group-prepend">
+            <div class="input-group-text">End Time</div>
+        </div>
+        <input type="time" class="form-control" id="end_time" required>
+    </div>
+
+    <label for="start_mm" class="sr-only">Initial</label>
+    <div class="input-group mb-2 mr-sm-2">
+        <div class="input-group-prepend">
+            <div class="input-group-text">Initial</div>
+        </div>
+        <input type="number" class="form-control" id="start_mm" required>
+    </div>
+
+    <label for="end_mm" class="sr-only">Final</label>
+    <div class="input-group mb-2 mr-sm-2">
+        <div class="input-group-prepend">
+            <div class="input-group-text">Final</div>
+        </div>
+        <input type="number" class="form-control" id="end_mm" required>
+    </div>
+
+    <label for="storage_tank_mm" class="sr-only">Storage Tank</label>
+    <div class="input-group mb-2 mr-sm-2">
+        <div class="input-group-prepend">
+            <div class="input-group-text">Storage Tank</div>
+        </div>
+        <input type="number" class="form-control" id="storage_tank_mm" required>
+    </div>
+</form><br>
+
+<table>
+
+</table><br>
+
+<button type="submit" class="btn btn-primary" form="refill-form">Submit</button>
+
+{% endblock %}

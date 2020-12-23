@@ -6,11 +6,11 @@ from django.contrib.auth.decorators import login_required
 
 from ..models import StorageTank, StorageTankRecord
 
-def view(request, id):
-    records = StorageTankRecord.objects.filter(storage_tank=id)\
+def view(request, no):
+    records = StorageTankRecord.objects.filter(storage_tank=no)\
         .order_by('record_date', 'record_time')
 
-    no = '{:02d}'.format(StorageTank.objects.get(pk=id).no)
+    no = '{:02d}'.format(StorageTank.objects.get(pk=no).no)
 
     context = {
         "last_record": records[len(records) - 1],
