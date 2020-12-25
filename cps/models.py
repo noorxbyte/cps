@@ -71,6 +71,20 @@ class StorageTank(models.Model):
 
 
 
+class StorageTankData(models.Model):
+
+    class Meta:
+        db_table = 'tblStorageTankData'
+
+    storage_tank = models.ForeignKey(
+        'StorageTank',
+        on_delete=models.CASCADE
+    )
+    sounding = models.IntegerField()
+    liters = models.IntegerField()
+
+
+
 class DayTank(models.Model):
 
     class Meta:

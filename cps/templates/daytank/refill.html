@@ -6,17 +6,35 @@
 
 {% block content %}
 
-<h3>Refill Day Tank {{ no }}</h3>
-
-<br>
+<h3>Refill Day Tank {{ no }}</h3><br>
 
 <form class="form-inline" id="refill-form" action="">
+    <label for="record_date" class="sr-only">Date</label>
+    <div class="input-group mb-2 mr-sm-2">
+        <div class="input-group-prepend">
+            <div class="input-group-text">Date</div>
+        </div>
+        <input type="date" class="form-control" id="record_date" onchange="autoFill()" required>
+    </div>
+
+    <label for="shift" class="sr-only">Shift</label>
+    <div class="input-group mb-2 mr-sm-2">
+        <div class="input-group-prepend">
+            <div class="input-group-text">Shift</div>
+        </div>
+        <select class="form-control" id="shift">
+            <option value="Z">Z</option>
+            <option value="X">X</option>
+            <option value="Y">Y</option>
+        </select>
+    </div>
+
     <label for="start_time" class="sr-only">Start Time</label>
     <div class="input-group mb-2 mr-sm-2">
         <div class="input-group-prepend">
             <div class="input-group-text">Start Time</div>
         </div>
-        <input type="time" class="form-control" id="start_time" required>
+        <input type="time" class="form-control" id="start_time" onchange="autoFill()" required>
     </div>
 
     <label for="end_time" class="sr-only">End Time</label>
@@ -24,38 +42,134 @@
         <div class="input-group-prepend">
             <div class="input-group-text">End Time</div>
         </div>
-        <input type="time" class="form-control" id="end_time" required>
+        <input type="time" class="form-control" id="end_time" onchange="autoFill()" required>
     </div>
 
-    <label for="start_mm" class="sr-only">Initial</label>
+    <label for="initial_mm" class="sr-only">Initial</label>
     <div class="input-group mb-2 mr-sm-2">
         <div class="input-group-prepend">
             <div class="input-group-text">Initial</div>
         </div>
-        <input type="number" class="form-control" id="start_mm" required>
+        <input type="number" class="form-control" id="initial_mm" onchange="autoFill()" required>
     </div>
 
-    <label for="end_mm" class="sr-only">Final</label>
+    <label for="final_mm" class="sr-only">Final</label>
     <div class="input-group mb-2 mr-sm-2">
         <div class="input-group-prepend">
             <div class="input-group-text">Final</div>
         </div>
-        <input type="number" class="form-control" id="end_mm" required>
+        <input type="number" class="form-control" id="final_mm" onchange="autoFill()" required>
     </div>
 
     <label for="storage_tank_mm" class="sr-only">Storage Tank</label>
     <div class="input-group mb-2 mr-sm-2">
         <div class="input-group-prepend">
-            <div class="input-group-text">Storage Tank</div>
+            <div class="input-group-text">{{ last_record.storage_tank }}</div>
         </div>
-        <input type="number" class="form-control" id="storage_tank_mm" required>
+        <input type="number" class="form-control" id="storage_tank_mm" max="{{ max_mm }}" onchange="autoFill()" required>
     </div>
 </form><br>
 
-<table>
+<h4>Day Tank Record</h4>
 
+<table class="table table-bordered table-hover table-sm">
+    <thead>
+        <tr>
+            <th rowspan="2">Date</th>
+            <th rowspan="2">Shift</th>
+            <th colspan="2">Initial</th>
+            <th colspan="2">Final</th>
+            <th colspan="3">Storage Tank</th>
+        </tr>
+        <tr>
+            <th scope="col">mm</th>
+            <th scope="col">liters</th>
+            <th scope="col">mm</th>
+            <th scope="col">liters</th>
+            <th scope="col">mm</th>
+            <th scope="col">liters</th>
+            <th scope="col">filled</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td id="cellDate"></td>
+            <td id="cellShift"></td>
+            <td id="cellinitialMM"></td>
+            <td id="cellInitialLtrs"></td>
+            <td id="cellFinalMM"></td>
+            <td id="cellFinalLtrs"></td>
+            <td id="cellMM"></td>
+            <td id="cellLtrs"></td>
+            <td id="cellDiff"></td>
+        </tr>
+    </tbody>
 </table><br>
 
-<button type="submit" class="btn btn-primary" form="refill-form">Submit</button>
+<h4>Storage Tank Record</h4>
+
+<table class="table table-bordered table-hover table-sm">
+    <thead>
+        <tr>
+            <th scope="col">Date</th>
+            <th scope="col">Shift</th>
+            <th scope="col">Details</th>
+            <th scope="col">Sounding</th>
+            <th scope="col">Liters</th>
+            <th scope="col">Difference</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!--<tr class="success">
+            <td>{{ last_record.record_date }}</td>
+            <td>{{ last_record.shift }}</td>
+            <td>{{ last_record.details }}</td>
+            <td>{{ last_record.sounding }}</td>
+            <td>{{ last_record.liters }}</td>
+            <td>{{ last_record.diff }}</td>
+        </tr>-->
+        <tr>
+            <td id="cellSTDate"></td>
+            <td id="cellSTShift"></td>
+            <td id="cellSTDetails"></td>
+            <td id="cellSTMM"></td>
+            <td id="cellSTLtrs"></td>
+            <td id="cellSTDiff"></td>
+        </tr>
+    </tbody>
+</table><br>
+
+<button class="btn btn-primary" id="btnSubmit">Submit</button>
+
+<script>
+
+    var dict = {};
+    var multiplier = {{ multiplier }};
+    var last_liters = {{ last_record.liters }};
+
+    {% for item in storage_tank_data %}
+    dict[{{ item.sounding }}] = {{ item.liters }};
+    {% endfor %}
+
+    function autoFill(){
+        document.getElementById("cellDate").innerHTML = document.getElementById("record_date").value;
+        document.getElementById("cellShift").innerHTML = document.getElementById("shift").value;
+        document.getElementById("cellinitialMM").innerHTML = document.getElementById("initial_mm").value;
+        document.getElementById("cellInitialLtrs").innerHTML = Math.round(document.getElementById("initial_mm").value * multiplier);
+        document.getElementById("cellFinalMM").innerHTML = document.getElementById("final_mm").value;
+        document.getElementById("cellFinalLtrs").innerHTML = Math.round(document.getElementById("final_mm").value * multiplier);
+        document.getElementById("cellMM").innerHTML = document.getElementById("storage_tank_mm").value;
+        document.getElementById("cellLtrs").innerHTML = dict[document.getElementById("storage_tank_mm").value];
+        document.getElementById("cellDiff").innerHTML = (dict[document.getElementById("storage_tank_mm").value] - last_liters) * -1;
+
+        document.getElementById("cellSTDate").innerHTML = document.getElementById("record_date").value;
+        document.getElementById("cellSTShift").innerHTML = document.getElementById("shift").value;
+        document.getElementById("cellSTDetails").innerHTML = `Refilled no. {{ no }} from ${document.getElementById("start_time").value} to ${document.getElementById("end_time").value}`;
+        document.getElementById("cellSTMM").innerHTML = document.getElementById("storage_tank_mm").value;
+        document.getElementById("cellSTLtrs").innerHTML = dict[document.getElementById("storage_tank_mm").value];
+        document.getElementById("cellSTDiff").innerHTML = (dict[document.getElementById("storage_tank_mm").value] - last_liters);
+    }
+
+</script>
 
 {% endblock %}
