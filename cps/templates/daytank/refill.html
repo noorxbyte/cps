@@ -8,7 +8,10 @@
 
 <h3>Refill Day Tank {{ no }}</h3><br>
 
+<!-- MAIN FORM -->
 <form class="form-inline" id="refill-form" action="">
+
+    <!-- Date field -->
     <label for="record_date" class="sr-only">Date</label>
     <div class="input-group mb-2 mr-sm-2">
         <div class="input-group-prepend">
@@ -17,6 +20,7 @@
         <input type="date" class="form-control" id="record_date" onchange="autoFill()" required>
     </div>
 
+    <!-- Shift select -->
     <label for="shift" class="sr-only">Shift</label>
     <div class="input-group mb-2 mr-sm-2">
         <div class="input-group-prepend">
@@ -29,6 +33,7 @@
         </select>
     </div>
 
+    <!-- Start time field -->
     <label for="start_time" class="sr-only">Start Time</label>
     <div class="input-group mb-2 mr-sm-2">
         <div class="input-group-prepend">
@@ -37,6 +42,7 @@
         <input type="time" class="form-control" id="start_time" onchange="autoFill()" required>
     </div>
 
+    <!-- End time field -->
     <label for="end_time" class="sr-only">End Time</label>
     <div class="input-group mb-2 mr-sm-2">
         <div class="input-group-prepend">
@@ -45,6 +51,7 @@
         <input type="time" class="form-control" id="end_time" onchange="autoFill()" required>
     </div>
 
+    <!-- Initial mm field -->
     <label for="initial_mm" class="sr-only">Initial</label>
     <div class="input-group mb-2 mr-sm-2">
         <div class="input-group-prepend">
@@ -53,6 +60,7 @@
         <input type="number" class="form-control" id="initial_mm" onchange="autoFill()" required>
     </div>
 
+    <!-- Final mm field -->
     <label for="final_mm" class="sr-only">Final</label>
     <div class="input-group mb-2 mr-sm-2">
         <div class="input-group-prepend">
@@ -61,6 +69,7 @@
         <input type="number" class="form-control" id="final_mm" onchange="autoFill()" required>
     </div>
 
+    <!-- Storage tank sounding field -->
     <label for="storage_tank_mm" class="sr-only">Storage Tank</label>
     <div class="input-group mb-2 mr-sm-2">
         <div class="input-group-prepend">
@@ -139,7 +148,8 @@
     </tbody>
 </table><br>
 
-<button class="btn btn-primary" id="btnSubmit">Submit</button>
+<!-- Submit button -->
+<button type="submit" form="refill-form" class="btn btn-primary" id="btnSubmit">Submit</button>
 
 <script>
 
@@ -147,10 +157,14 @@
     var multiplier = {{ multiplier }};
     var last_liters = {{ last_record.liters }};
 
+    // create dictionary to calculate liters
     {% for item in storage_tank_data %}
     dict[{{ item.sounding }}] = {{ item.liters }};
     {% endfor %}
 
+    /**
+     * Page on load
+     */
     (function() {
         var today = new Date();
         var dd = today.getDate();
@@ -160,10 +174,20 @@
         if(dd<10) { dd='0'+dd; } 
         if(mm<10) { mm='0'+mm; } 
 
+        // set date field to current date
         document.getElementById("record_date").value = yyyy+'-'+mm+'-'+dd;
     })();
 
+    /**
+     * function called when any field changes
+     */
     function autoFill(){
+        // end time must be greater than start time
+        document.getElementById("end_time").min = document.getElementById("start_time").value;
+        // final mm must be greater than initial mm
+        document.getElementById("final_mm").min = document.getElementById("initial_mm").value;
+
+        // fill the day tank record table
         document.getElementById("cellDate").innerHTML = document.getElementById("record_date").value;
         document.getElementById("cellShift").innerHTML = document.getElementById("shift").value;
         document.getElementById("cellinitialMM").innerHTML = document.getElementById("initial_mm").value;
@@ -174,6 +198,7 @@
         document.getElementById("cellLtrs").innerHTML = dict[document.getElementById("storage_tank_mm").value];
         document.getElementById("cellDiff").innerHTML = (dict[document.getElementById("storage_tank_mm").value] - last_liters) * -1;
 
+        // fill the storage tank record table
         document.getElementById("cellSTDate").innerHTML = document.getElementById("record_date").value;
         document.getElementById("cellSTShift").innerHTML = document.getElementById("shift").value;
         document.getElementById("cellSTDetails").innerHTML = `Refilled no. {{ no }} from ${document.getElementById("start_time").value} to ${document.getElementById("end_time").value}`;
