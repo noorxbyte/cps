@@ -22,7 +22,7 @@
         <div class="input-group-prepend">
             <div class="input-group-text">Shift</div>
         </div>
-        <select class="form-control" id="shift">
+        <select class="form-control" id="shift" onchange="autoFill()" required>
             <option value="Z">Z</option>
             <option value="X">X</option>
             <option value="Y">Y</option>
@@ -150,6 +150,18 @@
     {% for item in storage_tank_data %}
     dict[{{ item.sounding }}] = {{ item.liters }};
     {% endfor %}
+
+    (function() {
+        var today = new Date();
+        var dd = today.getDate();
+        var mm = today.getMonth()+1; 
+        var yyyy = today.getFullYear();
+
+        if(dd<10) { dd='0'+dd; } 
+        if(mm<10) { mm='0'+mm; } 
+
+        document.getElementById("record_date").value = yyyy+'-'+mm+'-'+dd;
+    })();
 
     function autoFill(){
         document.getElementById("cellDate").innerHTML = document.getElementById("record_date").value;
