@@ -35,6 +35,7 @@ def refill(request, daytank_id=None, genset_no=None):
         Genset.objects.get(no=genset_no).daytank.id if genset_no else None
 
     multiplier = DayTank.objects.get(pk=id).multiplier
+    max_final_mm = DayTank.objects.get(pk=id).max_mm
 
     data = StorageTankData.objects.filter(storage_tank=StorageTank.objects.get(in_use=True)).order_by('sounding')
 
@@ -46,6 +47,7 @@ def refill(request, daytank_id=None, genset_no=None):
         "last_record": last_record,
         "multiplier": multiplier,
         "max_mm": last_record.sounding - 1,
+        "max_final_mm": max_final_mm,
         "storage_tank_data": data
     }
 
