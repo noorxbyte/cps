@@ -35,6 +35,7 @@
         {% endif %}
         <hr style="margin-top: 5px; margin-bottom: 5px">
         <a href="{% url 'cps.genset.daytank.view' genset.no %}" class="dropdown-item">Day tank data</a>
+        <a class="dropdown-item" href="{% url 'cps.genset.daytank.refill' genset.no %}">Add Refill Record</a>
       </div>
     </div>
   </div>
