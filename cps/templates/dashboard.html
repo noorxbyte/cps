@@ -8,39 +8,106 @@
 
 {% load static %}
 
-<div class="">
 {% for genset in gensets %}
 <div class="card floating-card" style="width: 150px;">
-  <div class="card-header"><h5 class="card-title">{{ genset }}</h5></div>
-  {% if genset.running %}
+    <div class="card-header"><h5 class="card-title">{{ genset }}</h5></div>
+    {% if genset.running %}
     <img class="card-img-top" src="{% static 'images/genset/running.png' %}" alt="{{ genset }} Running">
-  {% else %}
+    {% else %}
     <img class="card-img-top" src="{% static 'images/genset/stopped.png' %}" alt="{{ genset }} Stopped">
-  {% endif %}
-  <div class="card-body text-center">
-    <div class="dropdown">
-      <button class="btn btn-light dropdown-toggle" type="button" id="btnDEG{{ genset.id }}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        {% if genset.running %}
-          Running
-        {% else %}
-          Stopped
-        {% endif %}
-      </button>
-      <!-- Genset actions drop down -->
-      <div class="dropdown-menu" aria-labelledby="btnDEG{{ genset.id }}">
-        {% if genset.running %}
-          <a href="" class="dropdown-item">Stop Genset</a>
-        {% else %}
-          <a href="" class="dropdown-item">Start Genset</a>
-        {% endif %}
-        <hr style="margin-top: 5px; margin-bottom: 5px">
-        <a href="{% url 'cps.genset.daytank.view' genset.no %}" class="dropdown-item">Day tank data</a>
-        <a class="dropdown-item" href="{% url 'cps.genset.daytank.refill' genset.no %}">Add Refill Record</a>
-      </div>
+    {% endif %}
+    <div class="card-body text-center">
+        <div class="dropdown">
+            <button class="btn btn-light dropdown-toggle" type="button" id="btnDEG{{ genset.id }}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            {% if genset.running %}
+            Running
+            {% else %}
+            Stopped
+            {% endif %}
+            </button>
+            <!-- Genset actions drop down -->
+            <div class="dropdown-menu" aria-labelledby="btnDEG{{ genset.id }}">
+                {% if genset.running %}
+                <a href="" class="dropdown-item" data-toggle="modal" data-target="#frmStopModal" onclick="stopClick({{ genset.no }})">Stop Genset</a>
+                {% else %}
+                <a href="" class="dropdown-item" data-toggle="modal" data-target="#frmStartModal" onclick="startClick({{ genset.no }})">Start Genset</a>
+                {% endif %}
+                <hr style="margin-top: 5px; margin-bottom: 5px">
+                <a href="{% url 'cps.genset.daytank.view' genset.no %}" class="dropdown-item">Day tank data</a>
+                <a class="dropdown-item" href="{% url 'cps.genset.daytank.refill' genset.no %}">Add Refill Record</a>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
 {% endfor %}
+
+<!-- START form -->
+<div class="modal" id="frmStartModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <!-- modal header -->
+            <div class="modal-header">
+                <h5 id="frmStartHeader" class="modal-title">Start Genset</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <!-- modal body -->
+            <div class="modal-body">
+                <form id="frmStart" action="" class="form-inline">
+                    <label for="time" class="mb-2 mr-sm-2">Time: </label>
+                    <input type="time" class="form-control mb-2 mr-sm-2" id="time" required>
+                </form>
+            </div>
+            <!-- modal footer -->
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary" form="frmStart">Start</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
 </div>
+
+<!-- STOP form -->
+<div class="modal" id="frmStopModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <!-- modal header -->
+            <div class="modal-header">
+                <h5 id="frmStopHeader" class="modal-title">Stop Genset</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <!-- modal body -->
+            <div class="modal-body">
+                <form id="frmStop" action="" class="form-inline">
+                    <label for="time" class="mb-2 mr-sm-2">Time: </label>
+                    <input type="time" class="form-control mb-2 mr-sm-2" id="time" required>
+                    <label for="units" class="mb-2 mr-sm-2">kWh: </label>
+                    <input type="number" class="form-control mb-2 mr-sm-2" id="units" required>
+                </form>
+            </div>
+            <!-- modal footer -->
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary" form="frmStop">Stop</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- scripts -->
+<script>
+
+    function startClick(no) {
+        document.getElementById("frmStartHeader").innerHTML = "Start Genset " + no;
+    }
+
+    function stopClick(no) {
+        document.getElementById("frmStopHeader").innerHTML = "Stop Genset " + no;
+    }
+
+</script>
 
 {% endblock %}
