@@ -6,14 +6,6 @@
 
 {% block content %}
 
-{% if messages %}
-<div class="alerts">
-    {% for message in messages %}
-    <div class="alert alert-{{ message.tags }}">{{ message }}</div>
-    {% endfor %}
-</div>
-{% endif %}
-
 {% load static %}
 
 {% for genset in gensets %}

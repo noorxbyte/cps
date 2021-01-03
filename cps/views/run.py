@@ -19,8 +19,9 @@ def start(request, genset_no=None):
         r.save()
 
         messages.add_message(request, messages.SUCCESS, 'Genset {:02d} started successfully!'.format(genset_no))
-
-    messages.add_message(request, messages.WARNING, 'Genset {:02d} couldn\'t be started!'.format(genset_no))
+    else:
+        messages.add_message(request, messages.WARNING, 'Genset {:02d} couldn\'t be started!'.format(genset_no))
+    
     return redirect('cps.dashboard')
 
 
@@ -35,8 +36,9 @@ def stop(request, genset_no=None):
         r.save()
 
         messages.add_message(request, messages.SUCCESS, 'Genset {:02d} stopped successfully!'.format(genset_no))
-
-    messages.add_message(request, messages.WARNING, 'Genset {:02d} couldn\'t be stopped!'.format(genset_no))
+    else:
+        messages.add_message(request, messages.WARNING, 'Genset {:02d} couldn\'t be stopped!'.format(genset_no))
+    
     return redirect('cps.dashboard')
 
 
