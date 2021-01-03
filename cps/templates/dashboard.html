@@ -6,6 +6,14 @@
 
 {% block content %}
 
+{% if messages %}
+<div class="alerts">
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+    {% endfor %}
+</div>
+{% endif %}
+
 {% load static %}
 
 {% for genset in gensets %}
@@ -54,9 +62,10 @@
             </div>
             <!-- modal body -->
             <div class="modal-body">
-                <form id="frmStart" action="" class="form-inline">
-                    <label for="time" class="mb-2 mr-sm-2">Time: </label>
-                    <input type="time" class="form-control mb-2 mr-sm-2" id="time" required>
+                <form id="frmStart" name="frmStart" action="" method="POST" class="form-inline">
+                    {% csrf_token %}
+                    <label for="start_time" class="mb-2 mr-sm-2">Time: </label>
+                    <input type="time" name="start_time" class="form-control mb-2 mr-sm-2" id="start_time" required>
                 </form>
             </div>
             <!-- modal footer -->
@@ -81,9 +90,10 @@
             </div>
             <!-- modal body -->
             <div class="modal-body">
-                <form id="frmStop" action="" class="form-inline">
-                    <label for="time" class="mb-2 mr-sm-2">Time: </label>
-                    <input type="time" class="form-control mb-2 mr-sm-2" id="time" required>
+                <form id="frmStop" name="frmStop" action="" method="POST" class="form-inline">
+                    {% csrf_token %}
+                    <label for="stop_time" class="mb-2 mr-sm-2">Time: </label>
+                    <input type="time" name="stop_time" class="form-control mb-2 mr-sm-2" id="stop_time" required>
                     <label for="units" class="mb-2 mr-sm-2">kWh: </label>
                     <input type="number" class="form-control mb-2 mr-sm-2" id="units" required>
                 </form>
@@ -102,10 +112,12 @@
 
     function startClick(no) {
         document.getElementById("frmStartHeader").innerHTML = "Start Genset " + no;
+        document.frmStart.action = "{% url 'cps.genset.start' 0 %}".replace('0', no);
     }
 
     function stopClick(no) {
         document.getElementById("frmStopHeader").innerHTML = "Stop Genset " + no;
+        document.frmStop.action = "{% url 'cps.genset.stop' 0 %}".replace('0', no);
     }
 
 </script>

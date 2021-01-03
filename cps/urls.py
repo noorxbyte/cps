@@ -7,6 +7,9 @@ urlpatterns = [
 
     path('daytanks/', views.daytank.index, name='cps.daytanks.index'),
 
+    path('genset/<int:genset_no>/start', views.run.start, name='cps.genset.start'),
+    path('genset/<int:genset_no>/stop', views.run.stop, name='cps.genset.stop'),
+
     # Add refill record by genset no
     path('genset/<int:genset_no>/daytank/refill', views.daytank.refill, name='cps.genset.daytank.refill'),
     # Add refill record by daytank id
